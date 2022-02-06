@@ -1,0 +1,76 @@
+[article Micburs Readme
+	[quickbook 1.7]
+	[copyright 2022 Fas Xmut]
+	[authors [Xmut, Fas]]
+	[license
+		Distributed under the Boost Software License, Version 1.0.
+		(See accompanying file LICENSE_1_0.txt or copy at
+		[@http://www.boost.org/LICENSE_1_0.txt])
+	]
+]
+
+[heading About Micburs NetStat]
+
+Micburs is a one time and one single source cpp (c++) program to get net stat, written in boost::beast, Botan::TLS and irrlicht.
+
+[heading Library Dependencies]
+
+* Boost 1.78+ - boost::asio, boost::beast for networking, boost::signals2 for manage signals.
+* Botan 3+ - Botan::TLS::Stream to make Https (TLS) handshake.
+* SFML 2.5 + - sf::Sound and sf::Music to play click and background audio.
+* Irrlicht 1.9+ - irr::gui is used to create window and gui.
+
+[heading How to Build]
+
+* Build and install ['b2 build]
+
+	* [@https://www.bfgroup.xyz/b2]
+
+* Configure your c++ compiler to support c++20 in `site-config.jam`
+
+* Install boostbook and boost quickbook
+
+* Configure boostbook and quickbook in `site-config.jam`
+
+* Build and install dependency libraries:
+	* Boost 1.78
+	* Botan 3 (github)
+	* SFML 2.5
+	* Irrlicht 1.9
+
+Because the jamroot (jamfile) in project directory is written very fast and simple, it does not detect your library installed path, you must edit jamroot, which is very simple, only edit the first line:
+	[!teletype]
+	```
+	path-constant localRoot : /sandbox ;
+	```
+
+* Build micburs:
+	[!teletype]
+	```
+	cd micburs
+	b2 -q
+	```
+
+[heading Operating Systems Supported:]
+
+* Windows
+* Kubuntu Linux, KaOS Linux
+* Haiku OS
+* SerenityOS
+* FreeBSD KDE Plasma
+* MacOS
+
+But the project is mainly developed and test on FreeBSD.
+
+[heading Sound Support]
+
+The project is using SFML Audio. When an irrlicht gui element is clicked, a simple short sound is played. When a session window is started, the session background music is played.
+
+However, if you do not hear anything, it might be the resource path is not correctly configured, such problem is complicated, it depends on how you install it. The project is written very fast and the project jamfile is very simple.
+
+[heading Why the name is so weird]
+
+I first build the project and think the name is micburs - micro burst, but the name is completely irrelevant now, it can be anything.
+
+
+

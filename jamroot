@@ -1,0 +1,29 @@
+path-constant localRoot : /sandbox ;
+
+import pkg-config ;
+using pkg-config : : pkgconf :
+	<path>$(localRoot)/lib/pkgconfig 
+	<path>$(localRoot)/libdata/pkgconfig
+	;
+
+pkg-config.import botan : requirements <name>botan-3 ;
+pkg-config.import sfml-audio : requirements <name>sfml-audio ;
+alias boost-headers-only : : : : <include>$(localRoot)/include ;
+lib irrlicht : : <name>Irrlicht <search>$(localRoot)/lib : : 
+	<include>$(localRoot)/include/irrlicht
+	<include>$(localRoot)/include ;
+
+exe micburs : micburs.cpp
+	:
+	<library>botan
+	<library>sfml-audio
+	<library>boost-headers-only
+	<library>irrlicht
+	;
+
+xml xmlIndex : readme.qbk ;
+
+boostbook html : xmlIndex ;
+
+
+
